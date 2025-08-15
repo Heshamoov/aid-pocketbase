@@ -14,4 +14,6 @@ RUN curl -L -o pb.zip \
 # data dir (will be mounted as a Railway Volume)
 RUN mkdir -p /pb/pb_data
 
-CMD ["/bin/sh","-lc","./pocketbase superuser upsert admin@test.com 'MyPass123' || true; exec ./pocketbase serve --http=0.0.0.0:${PORT:-8080}"]
+#CMD ["/bin/sh","-lc","./pocketbase superuser upsert admin@test.com 'MyPass123' || true; exec ./pocketbase serve --http=0.0.0.0:${PORT:-8080}"]
+
+CMD ["/bin/sh","-lc","./pocketbase migrate up || true; exec ./pocketbase serve --http=0.0.0.0:8080"]
