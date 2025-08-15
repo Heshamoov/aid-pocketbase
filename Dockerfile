@@ -15,4 +15,4 @@ RUN curl -L -o pb.zip \
 RUN mkdir -p /pb/pb_data
 
 EXPOSE 8080
-CMD ["./pocketbase", "superuser", "upsert", "admin@test.com", "MyPass123"]
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080"]
