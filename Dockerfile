@@ -13,6 +13,9 @@ RUN curl -L -o pb.zip \
 
 # data dir (will be mounted as a Railway Volume)
 RUN mkdir -p /pb/pb_data
+# copy schema migrations into the image
+COPY pb_migrations/ /pb/pb_migrations/
+
 
 #CMD ["/bin/sh","-lc","./pocketbase superuser upsert admin@test.com 'MyPass123' || true; exec ./pocketbase serve --http=0.0.0.0:${PORT:-8080}"]
 
