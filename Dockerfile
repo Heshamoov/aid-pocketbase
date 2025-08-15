@@ -16,4 +16,4 @@ RUN mkdir -p /pb/pb_data
 
 #CMD ["/bin/sh","-lc","./pocketbase superuser upsert admin@test.com 'MyPass123' || true; exec ./pocketbase serve --http=0.0.0.0:${PORT:-8080}"]
 
-CMD ["/bin/sh","-lc","./pocketbase migrate up || true; exec ./pocketbase serve --http=0.0.0.0:8080"]
+CMD ["/bin/sh","-lc","./pocketbase migrate up || true; ./pocketbase superuser upsert \"$PB_ADMIN_EMAIL\" \"$PB_ADMIN_PASS\" || true; exec ./pocketbase serve --http=0.0.0.0:${PORT:-8080}"]
